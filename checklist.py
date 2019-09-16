@@ -35,6 +35,11 @@ def mark_completed(index):
         for list_item in checklist:
                 print ("√ {}".format(list_item))
 
+#user input function
+def user_input(prompt):
+        user_input = input(prompt)
+        return user_input
+
 
 #select function
 def select(function_code):
@@ -58,6 +63,14 @@ def select(function_code):
         elif function_code == "Q":
                 return False
 
+        elif function_code == "U":
+                update_index = user_input("Index number?")
+                update_item = user_input("New item")
+                update(int(update_index), update_item)
+
+        elif function_code == "D":
+                index = int(user_input("Index:"))
+                destroy(index)
         #catch all
         else:
                 print("Unknown Option")
@@ -67,12 +80,8 @@ def select(function_code):
 running = True
 while running:
         selection = user_input(
-                "press C to add to list, R to read from list, P to display list and Q to quit")
-        running = select(selection) 
-
-def user_input(prompt):
-        user_input = input(prompt)
-        return user_input
+                "Press C to add to list, R to Read from list, P to display list, Q to quit, U to update an index and D to delete an index")
+        running = select(selection)
 
 
 #test function
@@ -99,4 +108,4 @@ def test():
 
 
 #calling test
-test()
+# test()
